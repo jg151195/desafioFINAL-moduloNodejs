@@ -1,7 +1,7 @@
 import pg from 'pg'
 
 async function connect(){
-    if(global.connection()){
+    if(global.connection){
         return global.connection.connect();
     }
 
