@@ -18,8 +18,8 @@ const repository = {
     async updateAutor (autor){
         const conn = await connect();
         try{
-            const sql = "UPDATE autores SET nome = $1, email = $2, senha = $3, telefone = $4, endereco = $4 WHERE autor_id = $5"
-            const values = [autor.nome, autor.email, autor.telefone]
+            const sql = "UPDATE autores SET nome = $1, email = $2, telefone = $3 WHERE autor_id = $4 RETURNING *"
+            const values = [autor.nome, autor.email, autor.telefone,autor.autor_id]
             const res = await conn.query(sql,values);
             return res.rows[0];
         } catch(err){

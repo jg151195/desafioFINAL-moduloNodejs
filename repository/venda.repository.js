@@ -60,7 +60,7 @@ const repository = {
         const conn = await connect();
         try{
             const sql = "SELECT * FROM vendas WHERE venda_id = $1";
-            const values = [vendaId.id];
+            const values = [vendaId];
             const res = await conn.query(sql,values);
             return res.rows;
         } catch(err){

@@ -1,6 +1,7 @@
 import repository from '../repository/venda.repository.js';
 import vendaServices from '../services/venda.services.js'
 
+
 const controller = {
 
     async createVenda(req, res) {
@@ -9,6 +10,7 @@ const controller = {
             if (!venda.valor || !venda.cliente_id || !venda.livro_id || !venda.data) {
                 res.send("Valor, cliente_id, livro_id e data são obrigatórios");
             }
+           
             res.send(await vendaServices.createVenda(venda));
         } catch(err){
             throw err
@@ -24,11 +26,11 @@ const controller = {
     },
 
     async deleteVenda(req, res) {
-        
         if(!req.params){
-            throw new Error("Id do venda necessário");
+            throw new Error("Id da venda necessário");
         }
-        res.send(await vendaServices.deleteVenda(req.params));
+        const {id} = req.params
+        res.send(await vendaServices.deleteVenda(id));
     },
 
     async getAllVendas(req, res) {
@@ -39,7 +41,8 @@ const controller = {
         if(!req.params){
             throw new Error("Id do venda necessário");
         }
-        res.send(await vendaServices.getVenda(req.params));
+        const {id} = req.params
+        res.send(await vendaServices.getVenda(id));
     }
 }
 export default controller

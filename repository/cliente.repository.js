@@ -18,8 +18,8 @@ const repository = {
     async updateCliente (cliente){
         const conn = await connect();
         try{
-            const sql = "UPDATE clientes SET nome = $1, email = $2, senha = $3, telefone = $4, endereco = $4 WHERE cliente_id = $5"
-            const values = [cliente.nome, cliente.email, cliente.senha, cliente.telefone, cliente.endereco]
+            const sql = "UPDATE clientes SET nome = $1, email = $2, senha = $3, telefone = $4, endereco = $5 WHERE cliente_id = $6 RETURNING *" 
+            const values = [cliente.nome, cliente.email, cliente.senha, cliente.telefone, cliente.endereco, cliente.cliente_id]
             const res = await conn.query(sql,values);
             return res.rows[0];
         } catch(err){
@@ -68,97 +68,7 @@ const repository = {
         } finally{
             conn.release()
         }
-    },
-    
-    // async  createAutor (){
-    //     return
-    // },
-    
-    // async  updateAutor (){
-    //     return
-    // },
-    
-    // async  deleteAutor (){
-    //     return
-    // },
-    
-    // async  getAllAutor (){
-    //     return
-    // },
-    
-    // async  getAutor (){
-    //     return
-    // },
-    
-    
-    
-    // async  createLivro (){
-    //     return
-    // },
-    
-    // async  updateLivro (){
-    //     return
-    // },
-    
-    // async  deleteLivro (){
-    //     return
-    // },
-    
-    // async  getLivro (){
-    //     return
-    // },
-    
-    // async  getAllLivro (){
-    //     return
-    // },
-    
-    
-    // async  getLivroFromAutor (){
-    //     return
-    
-    // },
-    
-    // async  createLivroInfo (){
-    //     return
-    // },
-    
-    // async  deleteLivroInfo (){
-    //     return
-    // },
-    
-    // async  createAvaliacao (){
-    //     return
-    // },
-
-    // async  deleteAvaliacao (){
-    //     return
-    // },
-    
-    
-    // async  createVenda (){
-    //     return
-    // },
-
-    // async  getVenda (){
-    //     return
-    // },
-    
-    // async  getAllVenda (){
-    //     return
-    // },
-    
-    
-    // async  getVendaFromCliente (){
-    //     return
-    // },
-    
-    // async  getVendaFromLivro (){
-    //     return
-    // },
-    
-    // async  getVendaFromAutor (){
-    //     return
-    // }
+    }
         
 } 
 

@@ -6,7 +6,7 @@ async function connect(){
     }
 
     const pool = new pg.Pool({
-        connectionString:'postgres://vlmfaedx:zIfhd_S0qEfSdfxHfgCTw63XWI-fiE4r@jelani.db.elephantsql.com/vlmfaedx'
+        connectionString:'postgres://lfslamgc:386m954WuhxD0GpHukgUzNug5WaySNc_@lallah.db.elephantsql.com/lfslamgc'
     });
 
     global.connection = pool;
